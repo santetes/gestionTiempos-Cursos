@@ -1,0 +1,30 @@
+<form #miFormulario="ngForm">
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-3">
+        <input
+          ngModel
+          required="true"
+          autocomplete="off"
+          name="nombre"
+          type="text"
+          class="form-control"
+          placeholder="Nombre del curso a añadir"
+        />
+      </div>
+    </div>
+    <div class="col-6">
+      <span *ngIf="nombreValido()" class="form-text text-danger text-warning"
+        >Tiene que tener algún valor</span
+      >
+    </div>
+  </div>
+  <button
+    type="button"
+    (click)="incluir()"
+    [disabled]="miFormulario.invalid"
+    class="col-1 btn btn-primary"
+  >
+    Añadir
+  </button>
+</form>

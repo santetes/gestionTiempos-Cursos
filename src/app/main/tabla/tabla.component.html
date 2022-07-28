@@ -1,0 +1,103 @@
+<table class="table table-sm table-striped fs-3">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Tiempo Acumulado</th>
+      <th scope="col">Actual</th>
+      <th scope="col">Acciones</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let curso of listadoCursos; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ curso.nombre }}</td>
+      <td>
+        {{ curso.acumulado.hora | number: "2.0-0" }}:{{
+          curso.acumulado.minuto | number: "2.0-0"
+        }}:{{ curso.acumulado.segundo | number: "2.0-0" }}
+      </td>
+      <td>
+        <app-contador
+          [accion]="curso.accion"
+          (aumentarAcumulado)="recibirTiempoAcumular($event, i)"
+        ></app-contador>
+      </td>
+      <td>
+        <button
+          (click)="play(i)"
+          [ngClass]="{
+            activado: curso.accion === 'play',
+            desactivado: curso.accion != 'play'
+          }"
+          class="btn btn-success mb-2"
+        >
+          <i class="bi bi-play"></i></button
+        ><button
+          (click)="stop(i)"
+          [ngClass]="{
+            activado: curso.accion === 'stop',
+            desactivado: curso.accion != 'stop'
+          }"
+          class="btn btn-danger mb-2 ms-1"
+        >
+          <i class="bi bi-stop"></i></button
+        ><button
+          (click)="pause(i)"
+          [ngClass]="{
+            activado: curso.accion === 'pause',
+            desactivado: curso.accion != 'pause'
+          }"
+          class="btn btn-info mb-2 ms-1"
+        >
+          <i class="bi bi-pause"></i>
+        </button>
+      </td>
+      <td>
+        <button (click)="borrar(i)" class="btn btn-secondary mb-2 ms-2">
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <th scope="row">1</th>
+      <td>Curso CSS</td>
+      <td>00:00:00</td>
+      <td><app-contador [accion]="accion"></app-contador></td>
+      <td>
+        <button
+          (click)="play()"
+          [ngClass]="{
+            activado: accion === 'play',
+            desactivado: accion != 'play'
+          }"
+          class="btn btn-success mb-2"
+        >
+          <i class="bi bi-play"></i></button
+        ><button
+          (click)="stop()"
+          [ngClass]="{
+            activado: accion === 'stop',
+            desactivado: accion != 'stop'
+          }"
+          class="btn btn-danger mb-2 ms-1"
+        >
+          <i class="bi bi-stop"></i></button
+        ><button
+          (click)="pause()"
+          [ngClass]="{
+            activado: accion === 'pause',
+            desactivado: accion != 'pause'
+          }"
+          class="btn btn-info mb-2 ms-1"
+        >
+          <i class="bi bi-pause"></i>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-secondary mb-2 ms-2">
+          <i class="bi bi-trash"></i>
+        </button>
+      </td> -->

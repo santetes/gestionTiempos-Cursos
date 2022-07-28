@@ -1,0 +1,16 @@
+table {
+  user-select: none;
+}
+
+button i {
+  font-size: 20px;
+  color: white;
+}
+
+.activado {
+  box-shadow: inset 4px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.desactivado {
+  box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
